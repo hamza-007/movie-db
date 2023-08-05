@@ -2,9 +2,8 @@ name: goreleaser
 
 on:
   push:
-    branches:
+    tags:
       - "*"
-    
 
 permissions:
   contents: write
@@ -28,4 +27,10 @@ jobs:
           go-version: 1.17
       -
         name: Run GoReleaser
-        run : goreleaser release --snapshot --clean
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          distribution: goreleaser
+          version: ${{ env.GITHUB_REF_NAME }}
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

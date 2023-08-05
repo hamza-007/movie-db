@@ -22,7 +22,7 @@ brews:
     name: tmp
     homepage: https://github.com/hamza-007/tmp
     tap:
-      owner: hamza abdellaoui
+      owner: hamza-007
       name: tmp
     commit_author:
       name: hamza-007

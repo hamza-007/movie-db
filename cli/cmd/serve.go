@@ -19,7 +19,7 @@ func Serve() *cobra.Command {
 	// Runner
 	cmd.Run = func(cmd *cobra.Command, args []string) {
 		logger.Info(cmd.Context(), "Launch server at :%s", os.Getenv("PORT"))
-		if err := server.Start(cmd.Context()); err != nil {
+		if err := server.Start(); err != nil {
 			logger.Error(cmd.Context(), err.Error())
 		}
 	}

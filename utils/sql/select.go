@@ -27,10 +27,6 @@ func (d *readQuery[M]) append(clause *goqu.SelectDataset) *readQuery[M] {
 	return d
 }
 
-/*============================================================================*/
-/*=====*                            Executor                            *=====*/
-/*============================================================================*/
-
 func (d readQuery[M]) Count(ctx context.Context, tx pg.Tx) (int, error) {
 	if d.empty {
 		return 0, nil
@@ -93,10 +89,6 @@ func (d readQuery[M]) Sel(ctx context.Context, tx pg.Tx, dst any) error {
 	}
 	return pg.Select(ctx, tx, dst, sql, args...)
 }
-
-/*============================================================================*/
-/*=====*                             Clause                             *=====*/
-/*============================================================================*/
 
 func (d *readQuery[M]) Check(values ...any) *readQuery[M] {
 	d.empty = lo.Ternary(d.empty, true, len(values) == 0)
